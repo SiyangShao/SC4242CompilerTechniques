@@ -1,0 +1,6 @@
+bin/
+.settings/
+# Ignore eclipse files
+.classpath
+.project
+Lab1.iml
