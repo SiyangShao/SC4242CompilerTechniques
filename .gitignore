@@ -1,2 +1,7 @@
 bin/
 .settings/
+junit*
+*.class
+scripts/
+apache*
+.DS_Store
