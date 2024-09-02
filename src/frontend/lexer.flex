@@ -37,11 +37,14 @@ import javax.print.DocFlavor;import static frontend.Token.Type.*;
 
 /* This definition may come in handy. If you wish, you can add more definitions here. */
 WhiteSpace = [ ] | \t | \f | \n | \r
+Alphabet = [a-zA-Z]
+Number = [0-9]
 
 
 %%
 /* put in your rules here.    */
 
+// key words
 "boolean" {return token(BOOLEAN, yytext());}
 "break" {return token(BREAK, yytext());}
 "else" {return token(ELSE, yytext());}
@@ -56,6 +59,37 @@ WhiteSpace = [ ] | \t | \f | \n | \r
 "type" {return token(TYPE, yytext());}
 "void" {return token(VOID, yytext());}
 "while" {return token(WHILE, yytext());}
+
+// punctuation symbols
+"," {return token(COMMA, yytext());}
+"[" {return token(LBRACKET, yytext());}
+"{" {return token(LCURLY, yytext());}
+"(" {return token(LPAREN, yytext());}
+"]" {return token(RBRACKET, yytext());}
+"}" {return token(RCURLY, yytext());}
+")" {return token(RPAREN, yytext());}
+";" {return token(SEMICOLON, yytext());}
+
+// operators
+"/" {return token(DIV, yytext());}
+"==" {return token(EQEQ, yytext());}
+"=" {return token(EQL, yytext());}
+">=" {return token(GEQ, yytext());}
+">" {return token(GT, yytext());}
+"<=" {return token(LEQ, yytext());}
+"<" {return token(LT, yytext());}
+"-" {return token(MINUS, yytext());}
+"!=" {return token(NEQ, yytext());}
+"+" {return token(PLUS, yytext());}
+"*" {return token(TIMES, yytext());}
+
+// identifier
+{Alphabet}({Alphabet}|[0-9]|_)* {return token(ID, yytext());}
+
+//  integer literals
+{Number}+ {return token(INT_LITERAL, yytext());}
+
+
 {WhiteSpace} {/* ignore whitespace */}
 (\"[^\"]*\") {
     var text = yytext();
@@ -63,7 +97,7 @@ WhiteSpace = [ ] | \t | \f | \n | \r
 }
 
 // If the character is not matched by any of the rules above, return null.
-. {return null;}
+. {return (Token) null;}
 
 
 
