@@ -19,7 +19,6 @@ jobs:
         id: junit
         run: |
           wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar
-          tar -xvf junit-platform-console-standalone-1.9.3.jar
       - name: Compile
         id: javac
         run: |
