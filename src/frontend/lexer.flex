@@ -71,15 +71,16 @@ Number = [0-9]
 ";" {return token(SEMICOLON, yytext());}
 
 // operators
-"/" {return token(DIV, yytext());}
 "==" {return token(EQEQ, yytext());}
-"=" {return token(EQL, yytext());}
 ">=" {return token(GEQ, yytext());}
-">" {return token(GT, yytext());}
 "<=" {return token(LEQ, yytext());}
+"!=" {return token(NEQ, yytext());}
+// others
+"/" {return token(DIV, yytext());}
+"=" {return token(EQL, yytext());}
+">" {return token(GT, yytext());}
 "<" {return token(LT, yytext());}
 "-" {return token(MINUS, yytext());}
-"!=" {return token(NEQ, yytext());}
 "+" {return token(PLUS, yytext());}
 "*" {return token(TIMES, yytext());}
 
@@ -95,9 +96,6 @@ Number = [0-9]
     var text = yytext();
     return token(STRING_LITERAL, text.substring(1, text.length() - 1));
 }
-
-// If the character is not matched by any of the rules above, return null.
-. {return (Token) null;}
 
 
 

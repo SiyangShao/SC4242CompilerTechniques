@@ -30,6 +30,7 @@ public class LexerTests {
                 expected = output[i++];
                 try {
                     actual = lexer.nextToken();
+                    System.out.println("Expected Token: " + expected + " ; Actual Token: " + actual);
                     assertEquals(expected, actual);
                 } catch (Error e) {
                     if (expected != null)
@@ -37,7 +38,7 @@ public class LexerTests {
                     /* return; */
                 }
                 // Not sure check actual != null is correct or not here
-            } while (actual != null &&!actual.isEOF());
+            } while (!actual.isEOF());
         } catch (IOException e) {
             e.printStackTrace();
             fail(e.getMessage());
@@ -63,7 +64,7 @@ public class LexerTests {
     public void testStringLiteralWithDoubleQuote() {
         runtest("\"\"\"",
                 new Token(STRING_LITERAL, 0, 0, ""),
-                (Token) null,
+                (Token)null,
                 new Token(EOF, 0, 3, ""));
     }
 
@@ -98,6 +99,7 @@ public class LexerTests {
         runtest("a _a",
                 new Token(ID, 0, 0, "a"),
                 null,
+                new Token(ID, 0, 3, "a"),
                 new Token(EOF, 0, 4, ""));
     }
 
