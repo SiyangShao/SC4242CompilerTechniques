@@ -136,6 +136,46 @@ public class LexerTests {
     }
 
     @Test
+    public void testIdentifierWithNumber() {
+        runtest("afc 13 1 a a12 \"hello world\"\n 2",
+                new Token(ID, 0, 0, "afc"),
+                new Token(INT_LITERAL, 0, 4, "13"),
+                new Token(INT_LITERAL, 0, 7, "1"),
+                new Token(ID, 0, 9, "a"),
+                new Token(ID, 0, 11, "a12"),
+                new Token(STRING_LITERAL, 0, 15, "hello world"),
+                new Token(INT_LITERAL, 1, 1, "2"),
+                new Token(EOF, 1, 2, ""));
+        runtest("boolean a1 = true\nint b2 = 123",
+                new Token(BOOLEAN, 0, 0, "boolean"),
+                new Token(ID, 0, 8, "a1"),
+                new Token(EQL, 0, 11, "="),
+                new Token(TRUE, 0, 13, "true"),
+                new Token(INT, 1, 0, "int"),
+                new Token(ID, 1, 4, "b2"),
+                new Token(EQL, 1, 7, "="),
+                new Token(INT_LITERAL, 1, 9, "123"),
+                new Token(EOF, 1, 12, ""));
+        runtest("if (a1+a2>=3) {\n" +
+                        "    return true;\n"
+                        + "}",
+                new Token(IF, 0, 0, "if"),
+                new Token(LPAREN, 0, 3, "("),
+                new Token(ID, 0, 4, "a1"),
+                new Token(PLUS, 0, 6, "+"),
+                new Token(ID, 0, 7, "a2"),
+                new Token(GEQ, 0, 9, ">="),
+                new Token(INT_LITERAL, 0, 11, "3"),
+                new Token(RPAREN, 0, 12, ")"),
+                new Token(LCURLY, 0, 14, "{"),
+                new Token(RETURN, 1, 4, "return"),
+                new Token(TRUE, 1, 11, "true"),
+                new Token(SEMICOLON, 1, 15, ";"),
+                new Token(RCURLY, 2, 0, "}"),
+                new Token(EOF, 2, 1, ""));
+    }
+
+    @Test
     public void testPunctuationBracket() {
         runtest("[(), (), ()]; {\"value_1\", \"value_2\"}",
                 new Token(LBRACKET, 0, 0, "["),
