@@ -64,7 +64,7 @@ public class LexerTests {
     public void testStringLiteralWithDoubleQuote() {
         runtest("\"\"\"",
                 new Token(STRING_LITERAL, 0, 0, ""),
-                (Token)null,
+                (Token) null,
                 new Token(EOF, 0, 3, ""));
     }
 
@@ -73,6 +73,30 @@ public class LexerTests {
         runtest("\"\\n\"",
                 new Token(STRING_LITERAL, 0, 0, "\\n"),
                 new Token(EOF, 0, 4, ""));
+    }
+
+    @Test
+    public void testNumberLiteral() {
+        runtest("123",
+                new Token(INT_LITERAL, 0, 0, "123"),
+                new Token(EOF, 0, 3, ""));
+        runtest("123 645 1235\"14",
+                new Token(INT_LITERAL, 0, 0, "123"),
+                new Token(INT_LITERAL, 0, 4, "645"),
+                new Token(INT_LITERAL, 0, 8, "1235"),
+                null,
+                new Token(INT_LITERAL, 0, 13, "14"),
+                new Token(EOF, 0, 15, ""));
+    }
+
+    @Test
+    public void testLiteral() {
+        runtest("123 \"abc\" 123 \"124\"",
+                new Token(INT_LITERAL, 0, 0, "123"),
+                new Token(STRING_LITERAL, 0, 4, "abc"),
+                new Token(INT_LITERAL, 0, 10, "123"),
+                new Token(STRING_LITERAL, 0, 14, "124"),
+                new Token(EOF, 0, 19, ""));
     }
 
     @Test
@@ -92,6 +116,14 @@ public class LexerTests {
                 new Token(ID, 0, 3, "b_"),
                 new Token(ID, 0, 6, "c_"),
                 new Token(EOF, 0, 8, ""));
+        runtest("1ab 2c 3d",
+                new Token(INT_LITERAL, 0, 0, "1"),
+                new Token(ID, 0, 1, "ab"),
+                new Token(INT_LITERAL, 0, 4, "2"),
+                new Token(ID, 0, 5, "c"),
+                new Token(INT_LITERAL, 0, 7, "3"),
+                new Token(ID, 0, 8, "d"),
+                new Token(EOF, 0, 9, ""));
     }
 
     @Test
@@ -126,7 +158,7 @@ public class LexerTests {
     }
 
     @Test
-    public void testOperators(){
+    public void testOperators() {
         runtest("/ == = >= <= > < - + *",
                 new Token(DIV, 0, 0, "/"),
                 new Token(EQEQ, 0, 2, "=="),
