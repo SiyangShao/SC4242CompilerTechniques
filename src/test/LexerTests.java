@@ -176,6 +176,39 @@ public class LexerTests {
     }
 
     @Test
+    public void testIdentifierComplex() {
+        runtest("while(1+_a>=2x){a+=1;}",
+                new Token(WHILE, 0, 0, "while"),
+                new Token(LPAREN, 0, 5, "("),
+                new Token(INT_LITERAL, 0, 6, "1"),
+                new Token(PLUS, 0, 7, "+"),
+                null,
+                new Token(ID, 0, 9, "a"),
+                new Token(GEQ, 0, 10, ">="),
+                new Token(INT_LITERAL, 0, 12, "2"),
+                new Token(ID, 0, 13, "x"),
+                new Token(RPAREN, 0, 14, ")"),
+                new Token(LCURLY, 0, 15, "{"),
+                new Token(ID, 0, 16, "a"),
+                new Token(PLUS, 0, 17, "+"),
+                new Token(EQL, 0, 18, "="),
+                new Token(INT_LITERAL, 0, 19, "1"),
+                new Token(SEMICOLON, 0, 20, ";"),
+                new Token(RCURLY, 0, 21, "}"),
+                new Token(EOF, 0, 22, ""));
+    }
+
+    @Test
+    public void testTogetherKeyWord() {
+        runtest("modulefalse returnwhile while;",
+                new Token(ID, 0, 0, "modulefalse"),
+                new Token(ID, 0, 12, "returnwhile"),
+                new Token(WHILE, 0, 24, "while"),
+                new Token(SEMICOLON, 0, 29, ";"),
+                new Token(EOF, 0, 30, ""));
+    }
+
+    @Test
     public void testPunctuationBracket() {
         runtest("[(), (), ()]; {\"value_1\", \"value_2\"}",
                 new Token(LBRACKET, 0, 0, "["),
