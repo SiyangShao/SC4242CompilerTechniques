@@ -246,5 +246,38 @@ public class LexerTests {
                 new Token(EOF, 0, 22, ""));
     }
 
+    @Test
+    public void testInvalidCharacters() {
+        // Input containing invalid characters such as "@" and "#"
+        runtest("a @ b # c",
+                new Token(ID, 0, 0, "a"),
+                null,
+                new Token(ID, 0, 4, "b"),
+                null,
+                new Token(ID, 0, 8, "c"),
+                new Token(EOF, 0, 9, ""));
+    }
+        
 
+    @Test
+    public void testMisinterpretationOfOperators() {    
+        // Overlapping multi-character operators
+        runtest("><<=>=",
+                new Token(GT, 0, 0, ">"),
+                new Token(LT, 0, 1, "<"),
+                new Token(LEQ, 0, 2, "<="),
+                new Token(GEQ, 0, 4, ">="),
+                new Token(EOF, 0, 6, ""));
+    }
+
+    @Test
+    public void testIdentifiersWithInvalidStartingCharacters() {
+        // Identifiers starting with numbers
+        runtest("1abc 2def",
+                new Token(INT_LITERAL, 0, 0, "1"),
+                new Token(ID, 0, 1, "abc"),
+                new Token(INT_LITERAL, 0, 5, "2"),
+                new Token(ID, 0, 6, "def"),
+                new Token(EOF, 0, 9, ""));
+    }
 }
