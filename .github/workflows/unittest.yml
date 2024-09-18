@@ -24,9 +24,9 @@ jobs:
         run: |
           javac -cp .:junit-platform-console-standalone-1.9.3.jar \
             -d out \
-            src/test/LexerTests.java \
-            gen/lexer/Lexer.java \
-            src/frontend/Token.java
+            lab1/src/test/LexerTests.java \
+            lab1/gen/lexer/Lexer.java \
+            lab1/src/frontend/Token.java
       - name: Test
         id: test
         run: |
