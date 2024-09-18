@@ -22,7 +22,8 @@ jobs:
       - name: Compile
         id: javac
         run: |
-          javac -cp .:junit-platform-console-standalone-1.9.3.jar \
+          cd lab1
+          javac -cp .:../junit-platform-console-standalone-1.9.3.jar \
             -d out \
             src/test/LexerTests.java \
             gen/lexer/Lexer.java \
@@ -30,6 +31,7 @@ jobs:
       - name: Test
         id: test
         run: |
-          java -jar junit-platform-console-standalone-1.9.3.jar \
+          cd lab1
+          java -jar ../junit-platform-console-standalone-1.9.3.jar \
             --class-path out \
             --scan-class-path
