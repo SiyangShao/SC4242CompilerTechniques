@@ -33,7 +33,7 @@
 		  ;
   */
 
-Module = ;
+Module = MODULE ID LCURLY RCURLY;
 
 /**/
 

@@ -12,38 +12,38 @@ public class Parser extends beaver.Parser {
 	static public class Terminals {
 		static public final short EOF = 0;
 		static public final short MODULE = 1;
-		static public final short INT = 2;
-		static public final short VOID = 3;
-		static public final short IF = 4;
-		static public final short ELSE = 5;
-		static public final short WHILE = 6;
-		static public final short RETURN = 7;
-		static public final short BREAK = 8;
-		static public final short BOOLEAN = 9;
-		static public final short PUBLIC = 10;
-		static public final short TRUE = 11;
-		static public final short FALSE = 12;
-		static public final short INT_LITERAL = 13;
-		static public final short STRING_LITERAL = 14;
-		static public final short ID = 15;
-		static public final short TYPE = 16;
-		static public final short IMPORT = 17;
-		static public final short PLUS = 18;
-		static public final short MINUS = 19;
-		static public final short TIMES = 20;
-		static public final short DIV = 21;
-		static public final short MOD = 22;
-		static public final short EQEQ = 23;
-		static public final short NEQ = 24;
-		static public final short LEQ = 25;
-		static public final short GEQ = 26;
-		static public final short LT = 27;
-		static public final short GT = 28;
-		static public final short LBRACKET = 29;
-		static public final short RPAREN = 30;
-		static public final short COMMA = 31;
-		static public final short RCURLY = 32;
-		static public final short LCURLY = 33;
+		static public final short ID = 2;
+		static public final short RCURLY = 3;
+		static public final short LCURLY = 4;
+		static public final short INT = 5;
+		static public final short VOID = 6;
+		static public final short IF = 7;
+		static public final short ELSE = 8;
+		static public final short WHILE = 9;
+		static public final short RETURN = 10;
+		static public final short BREAK = 11;
+		static public final short BOOLEAN = 12;
+		static public final short PUBLIC = 13;
+		static public final short TRUE = 14;
+		static public final short FALSE = 15;
+		static public final short INT_LITERAL = 16;
+		static public final short STRING_LITERAL = 17;
+		static public final short TYPE = 18;
+		static public final short IMPORT = 19;
+		static public final short PLUS = 20;
+		static public final short MINUS = 21;
+		static public final short TIMES = 22;
+		static public final short DIV = 23;
+		static public final short MOD = 24;
+		static public final short EQEQ = 25;
+		static public final short NEQ = 26;
+		static public final short LEQ = 27;
+		static public final short GEQ = 28;
+		static public final short LT = 29;
+		static public final short GT = 30;
+		static public final short LBRACKET = 31;
+		static public final short RPAREN = 32;
+		static public final short COMMA = 33;
 		static public final short SEMICOLON = 34;
 		static public final short RBRACKET = 35;
 		static public final short LPAREN = 36;
@@ -54,15 +54,22 @@ public class Parser extends beaver.Parser {
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9pDaMjIma0GX9iG7aaWyWWGGH04aN0DB#OvhV8Qlc7zPWoUmQtwfZlxOwhJA#and1I54Bx" +
-		"KKXpEQgkhdZeQQAH44wKgbMcXfVfQAzTMLzhheA7iZCEt2dTJcAd9l8QvtztuNC6jkmtSkT" +
-		"l1lRi7drNjAZNOBKMAoT4aIKwk8QaACitOdR0rPL$6fftw90yaaWRkHZ3MdZc1gT#LFkUmS" +
-		"BU4bRirRDnjVLgYuvF#JWJsHsreGGTYw482AJGWWnxyff5ov8nUSfrGwujqz4LhK7ZdifpX" +
-		"yz8V$WCjhKNyUzsavNwpFj5NT6cDMaw#dsjzCVsFr2VsjwterDxvGDV77ypMWum=");
+		"U9pLaGTE0p4K1OTiUYMz1q926kKGd8np8d4CEiJCEiiX#DBpUvOjU$mDF70W5qBuea0#72b" +
+		"HeKY35cKwzEbIPKoD6NKkMD9amuvpeCqwV7DDZvlmmu1R4eRSCMBgweHJpTKYfiiuNgbLJ5" +
+		"l#QizPdAM#qulUNV2#fZHj2N8o3UMOo36Nek4fQreXo96uFozfJk#PDZ8dqenT7OLOJDKif" +
+		"aKSBzKofbN8odV0$QD3d17FIo9BUZwI8TEfIggiAcuzwbNzHw#fklbRRwXcx2lsCkqMT9n$" +
+		"wbrrRlw8pD0tl#i3$KqVgb7MGzd3g#vxmei#o$fvaNLqdVOqutxA$3dr$w2iyl7dz$PyQzx" +
+		"v5uTVn2A0hW==");
 
 	static final Action RETURN2 = new Action() {
 		public Symbol reduce(Symbol[] _symbols, int offset) {
 			return _symbols[offset + 2];
+		}
+	};
+
+	static final Action RETURN4 = new Action() {
+		public Symbol reduce(Symbol[] _symbols, int offset) {
+			return _symbols[offset + 4];
 		}
 	};
 
@@ -85,7 +92,7 @@ public class Parser extends beaver.Parser {
 		actions = new Action[] {
 			Action.RETURN,	// [0] $goal = Module
 			RETURN2,	// [1] $goal = $Dummy Dummy; returns 'Dummy' although none is marked
-			Action.NONE,  	// [2] Module = 
+			RETURN4,	// [2] Module = MODULE ID LCURLY RCURLY; returns 'RCURLY' although none is marked
 			RETURN37	// [3] Dummy = MODULE INT VOID IF ELSE WHILE RETURN BREAK BOOLEAN PUBLIC TRUE FALSE INT_LITERAL STRING_LITERAL ID TYPE IMPORT PLUS MINUS TIMES DIV MOD EQEQ NEQ LEQ GEQ LT GT LBRACKET RPAREN COMMA RCURLY LCURLY SEMICOLON RBRACKET LPAREN EQL; returns 'EQL' although none is marked
 		};
 	}
