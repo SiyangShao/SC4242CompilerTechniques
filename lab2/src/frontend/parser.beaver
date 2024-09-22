@@ -33,8 +33,85 @@
 		  ;
   */
 
-Module = MODULE ID LCURLY RCURLY;
+Module = MODULE ID LCURLY Imports Declarations RCURLY;
 
+Imports = Import Imports
+  |
+  ;
+
+Import = IMPORT ID SEMICOLON;
+
+Declarations = Declaration Declarations
+  |
+  ;
+
+Declaration = FunctionDeclaration
+  | FieldDeclaration
+  | TypeDeclaration
+  ;
+
+FunctionDeclaration = Accessibility TypeName ID LPAREN ParamList RPAREN LCURLY Statements RCURLY;
+
+FieldDeclaration = Accessibility TypeName ID SEMICOLON ;
+TypeDeclaration = Accessibility TYPE ID EQL STRING_LITERAL SEMICOLON;
+
+Accessibility = PUBLIC
+  |
+  ;
+
+Statements = Statement Statements
+  |
+  ;
+
+Statement = VarDeclaration
+  | BlockStatements
+  | IfStatement
+  | WhileStatement
+  | BreakStatement
+  | ReturnStatement
+  | ExpressionStatement
+  ;
+
+VarDeclaration = TypeName ID SEMICOLON;
+
+BlockStatements = LCURLY Statements RCURLY;
+
+IfStatement = IF LPAREN Expression RPAREN OptionalElse;
+
+OptionalElse = ELSE Statement
+  |
+  ;
+
+WhileStatement = WHILE LPAREN Expression RPAREN Statement;
+
+BreakStatement = BREAK SEMICOLON;
+
+ReturnStatement = RETURN OptionalExpression SEMICOLON;
+
+ExpressionStatement = Expression SEMICOLON;
+
+OptionalExpression = Expression
+  |
+  ;
+
+BaseType = PrimitiveType
+  | ID
+  ;
+
+PrimitiveType = INT
+  | BOOLEAN
+  | VOID
+  ;
+
+TypeName = BaseType ArraySuffix ;
+
+ArraySuffix = LBRACKET RBRACKET ArraySuffix
+  |
+  ;
+
+
+Expression = MINUS;
+ParamList = ;
 /**/
 
 /* Dummy rule to make the lexer compile. Remove this once you have written all other rules. */	  

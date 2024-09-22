@@ -25,16 +25,27 @@ public class ParserTests {
 		} catch (beaver.Parser.Exception e) {
 			if(succeed) {
 				e.printStackTrace();
-				fail(e.getMessage());
+				fail(e.getMessage()); 
 			}
 		} catch (Throwable e) {
 			e.printStackTrace();
-			fail(e.getMessage());
+			fail(e.getMessage() + " (unexpected exception)");
 		}
 	}
 
 	@Test
 	public void testEmptyModule() {
 		runtest("module Test { }");
+	}
+	
+	@Test
+	public void testPrimitiveType() {
+		runtest("module Test { public int a; }");
+	}
+
+	@Test
+	public void testArrayType() {
+		runtest("module Test { public int[] a; }");
+		runtest("module Test { public int[][] a; }");
 	}
 }
