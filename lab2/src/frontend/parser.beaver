@@ -114,7 +114,15 @@ ArraySuffix = LBRACKET RBRACKET ArraySuffix
   |
   ;
 
-ParamList = ;
+ParamList = Parameter ParamListTail
+  |
+  ;
+
+ParamListTail = COMMA Parameter ParamListTail
+  |
+  ;
+
+Parameter = TypeName ID;
 
 Expression = Assignment
   | RHSExpression

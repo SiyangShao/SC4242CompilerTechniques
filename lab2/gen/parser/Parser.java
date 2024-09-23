@@ -19,14 +19,14 @@ public class Parser extends beaver.Parser {
 		static public final short INT_LITERAL = 6;
 		static public final short TRUE = 7;
 		static public final short FALSE = 8;
-		static public final short RCURLY = 9;
-		static public final short RPAREN = 10;
+		static public final short RPAREN = 9;
+		static public final short RCURLY = 10;
 		static public final short SEMICOLON = 11;
 		static public final short RBRACKET = 12;
-		static public final short LCURLY = 13;
-		static public final short INT = 14;
-		static public final short BOOLEAN = 15;
-		static public final short VOID = 16;
+		static public final short INT = 13;
+		static public final short BOOLEAN = 14;
+		static public final short VOID = 15;
+		static public final short LCURLY = 16;
 		static public final short IF = 17;
 		static public final short WHILE = 18;
 		static public final short BREAK = 19;
@@ -51,31 +51,33 @@ public class Parser extends beaver.Parser {
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9pDLcTqL4KOlMyJ4r9MGaa1WSGaf9564a9w9J6a1n11m8g2YXMneOAYOWHi$EJuotDi4H5" +
-		"1KL6neOAe88WACTWLR34eQ2oVzytExdcyNL8qdEFkkVDzS#VEDz$CUpFp0CTqp48#9g4Qfw" +
-		"4UPw082p4HUOZ6jLY4Qn21A8p0I9o2KHYDCHZUJtraF$LnlUZ7sVGzgpDjwfin6#UY0ZMOZ" +
-		"5hKIIVcenWbYCMjM8RRC1Qf68zi7xePc8ap1qg7atL#lUdcus9cv$3IsMUTgsPjPwVuPCzM" +
-		"R8Djf1mlNQBIDNlnwOgVuyKN#XpjT9$iUJxP2tfWxVdEHPDqs5bfaxLUoWMO9WzZgHTlh$l" +
-		"XKbo6ot45hiHLkAHN$OckpqALPHqkuZoiJ2cSqeubQ88$Ja80xiOW12C4eT9jcuTJFi5riX" +
-		"kBSI#2iCgjGxabMgN5Ny48WGWpUoYqSPoLk5r4luEhC0tto1ySSJ26oFiOYd3v6J4OXbCHZ" +
-		"mGa8Hbt80Lfo40P6f652N80Kz620da2qycTXNFaCPpFE7Dn8URXQlb8FiJrk44#m8suIVQm" +
-		"roso5ylHYZlvvEx2VG2plv$H4rNy59u3gHmXdMDaSaTaSK$aO8BU1$aeuDjOn9tz$zBtJsr" +
-		"mt$lffnl8fnR4TwEIJyd9qsCmmZ24Ap#Cvx6tBePF8dR0TExyUjEvieltqlcUTNzO#qXDnz" +
-		"4r7uTl6O0S$ak#PYt4Ymtctyxv8vodTgWNxrsttchHVT2VsBfz7VnjJBdkuLHdZFk4g#SxU" +
-		"EmyN3eJaTH5UNJMQ5RVO8GWndNtSgrS24yBrpiOnVMifgA6V8DQSLDlC8yGrI#O9qqSRrNJ" +
-		"g#AP6gB#PQn546NaGbc6qWzNqKlLSpJebNZAKbKQN8i8CcpdIHcfSbYz5Egt5Z2M4Rk93k8" +
-		"0u328uGIR7KDDdHki1nAZY454E151HB9X4MsKZjbAVuIrdnriZoL6Qlq3z4ThFfv5D#qO8a" +
-		"2thzTjoSnl8MqSArirDzPbZIdq4pINQ1adccsBjMQ1jYjOC8wXry1OqrEkn#PjpDHs3cEdQ" +
-		"7ys$LJQ1scJTCxBVVHjOtkQpikVo22tWJPBjs#cdqqKwVfhnCw#vUN8rRQSg62$JjeysYxQ" +
-		"AgAGu7Dtr91h9#RHTn9rFcBL4$d4PA9QSs749EqNQzj2r5hc5sFnrrZNbVuwxt7GQcdVvVP" +
-		"5P9$5x#hB$2qnWstr3Xr$lwx7MjeEQPjlwxEnX$X7j2rspuiuIEpLzVQ#vsfqwbXRBDnXRR" +
-		"a7ZQDMpfR7TakVRcr3BLoaopeCNN#8nSg#vkOxNqUWnG$Mbk#KOUvbvx#BQUpnCRVLq3$vI" +
-		"xgKPIc$oszo5BQV757bJ$AZ$23VotToI0ugvbjLVgDLNyhNBB$ozFg2#5nvdn6xPATiedrF" +
-		"jidRjAyGBn7FoREoIPwHfsMZR92dPBqyAJlaNTLldOxK9e$Bg$A2R9RdvKN5FEePvH5Lxf1" +
-		"tM6wJxVAoR96tv4rvGxRAwyBTBP$QvsFgjTql##HZ#TN3$wBAmroJlvNt9uiPl943U8iu2F" +
-		"0cyUFDv230sydme9RtIHtllNfgpLkCPmI$3nq4#6Ld71UvZ3UHoEFzqKXz8$Nvz0le5v8le" +
-		"csYhebyDgs9B0l6Q#HmR1Cbx5D2RGEHJjv41hb4nYbbUodvJFgLv2hfLx3T5z8K$FX5PoYa" +
-		"qa#bhR8WWN4IQ9DwGJB7RQQscUELCKuPRGlhAVJ74LF$0LrVIoe=");
+		"U9pDLsbOLKKOVi#zGDmB6PcWQAQY0Y828eY0R2hbWgoI5YXfBfLPcT5cfPKj5bcPPVayFVq" +
+		"eesmnmxB5D2lAR2yhiyrAArDBQJDRljupTouTphrmkK$zYFEyyttppZlpVMTcpim5SCn73R" +
+		"8n1YVY99HWCaPY0R8m0drm4Ufn8MBG0x7eYLuu7hrn0he5gUyUfBv$0FrWcxvZTPfDVGLgC" +
+		"HsZC1RZC1uJ42e7SJiSk0fNOmdYC13968fXTftSIzrCb0NImIa7vLDS753NHUSNI7S6yf2F" +
+		"41#T$Qs7gxUsivL#sJh5JhIzuODOYGmVROBIbllmAOgVwiFd#erOxPUTuPUTrG5hp$azB9J" +
+		"Fx2ocu1ISYiK#VA3wsG4Ldf6FmZoSWtDn7kRZVCmDEawmzHeKM#RYJEPfPGfmWzvBHHQsGK" +
+		"GQRNaUZKbw7rs3CBQ6apaMRaGW4dV0nUyW70tKU9ZHrj5qFnr9tk6#F8lxKh7o2HQXJ8x84" +
+		"KIPAuARrRhyBczX6QvdUGnMO0LLDw4h#k8uN8T#Y6OPBuSm08b8mY0CGIeAKOfqPChdg42L" +
+		"hC79o24t3QV9$JYTUStc5pW75yWE#H2Nu59v7vVXSjdENbVA1xWMI#LTUHituXOinwrS$vM" +
+		"u3NS2k0lntCU9Z9B4qoEPiL8OBOtVKJg$f0nawgydc$5okTVo$cVwuDG6JpCdJunGX76dXd" +
+		"C5tTn90xZMNRWIKLpnhbo3RZuwSzrD9f3EeCxa0kcy#GNIZU9E6yDskyx$MmV3sYEvU1TLj" +
+		"AEjR8Ul#W$o#3Svc$K87xOllw0uVgF#r1tLGm8gF2ExszoPVOAE4spTFXSXDiQxbwoimIyx" +
+		"qfPd4SyLppuQptFBnVEpY7Ts2K$KKdMIcIUgGOs7QJkQfvytaallIm$hoTVDnwdy$gfqKnN" +
+		"1I2xMUl0nETEFOeG8jaRhFYxUskNqNJnH2zXYFYwUR2PYo4NIHh8MpTAX50QVI9wlth90bH" +
+		"Fuk5G4WpCNmxRkfbQ49R1gCTJVL68riOKu03XY0MCPiOz#JwAVgVE2zL0YbOWZeeXa8e4Dz" +
+		"RHfUiobz8TP#zd1zamYHUllff#X#Mp6daixdEYbszVfjWAsBQ3DOQLPSxaUQqoYFr9pUPOu" +
+		"MMnRg3MBjLr2Z2KQTFsUZd9jcpUMQtk4OnVg$YtqHz4sqkPhhjwthx6MxQErluj#CUq6sd6" +
+		"QsqoVUJcgTFqLOdldydAKQ3kPc4B7pAMK$MjfQuWAOY0nZUX3leusaPXk6wS$mJx6NjfuWl" +
+		"l3CLktfHDrsfz3c7C#avXXwL#jxJnYbcNUyYt#28xVP9cNZNxcUQbrthm#VwNijFWjdPaRo" +
+		"vXkMtsN7l#GhiTPslPhcsthixw3yGzhwzrNJOGGctHzJ#TpTOJfiJPREBSUnqa$KdCkFtbi" +
+		"i$I9qdsw$CCPiRgjkwwl8NPqDhTsykrjyVjgsu$Z3Z3tb1zz3nrxjtdc11$FxvvP1VqdVqg" +
+		"BiYpbDpailyBs9x#eyWVvNWx8VjadtybUnNohoc#qQhTypN9FQw#lY2#LzmNnXhmkN6DvJP" +
+		"g5tweyHpn3F27hfKaUbtNocAoLH#KHULYsoZRLxo4zKgCy89laATaWJyhJYbdT6kK#LMwLL" +
+		"rasoykoKPwLb#H5UK6soFF2Kq9ssT$7r6lxiUoKZzgqlAdAdrlhFycFdA6$bFy7Yrh#cWlZ" +
+		"ZUSWm5lFoRlFGK3TVrwKy2wPoBksbDeYrelOdaTT7cqcw#rXECVB8aRm5YgdlfpwRFevz7F" +
+		"9ZwIje8ud5EzIGo7TWg4Q6Onj8fzzygajOxyoMluNJO0tguE$YWo5L789wdOC8S1VIWxUpq" +
+		"u2lAaDlnYYuEGjRYWaqq#cBROWdkF4qoO6m236hQIsal4AEKuXRHNhIVG74zL$0$UuQuG=");
 
 	static final Action RETURN6 = new Action() {
 		public Symbol reduce(Symbol[] _symbols, int offset) {
@@ -169,65 +171,69 @@ public class Parser extends beaver.Parser {
 			RETURN4,	// [42] ArrayType = PrimitiveType LBRACKET RBRACKET ArraySuffix; returns 'ArraySuffix' although none is marked
 			RETURN3,	// [43] ArraySuffix = LBRACKET RBRACKET ArraySuffix; returns 'ArraySuffix' although none is marked
 			Action.NONE,  	// [44] ArraySuffix = 
-			Action.NONE,  	// [45] ParamList = 
-			Action.RETURN,	// [46] Expression = Assignment
-			Action.RETURN,	// [47] Expression = RHSExpression
-			RETURN3,	// [48] Assignment = LHSExpression EQL Expression; returns 'Expression' although none is marked
-			RETURN2,	// [49] LHSExpression = ID ArrayAccess; returns 'ArrayAccess' although none is marked
-			RETURN4,	// [50] ArrayAccess = LBRACKET Expression RBRACKET ArrayAccess; returns 'ArrayAccess' although none is marked
-			Action.NONE,  	// [51] ArrayAccess = 
-			RETURN2,	// [52] RHSExpression = ArithmeticExpression ComparisonExpressionTail; returns 'ComparisonExpressionTail' although none is marked
-			RETURN3,	// [53] ComparisonExpressionTail = ComparisonOperator ArithmeticExpression ComparisonExpressionTail; returns 'ComparisonExpressionTail' although none is marked
-			Action.NONE,  	// [54] ComparisonExpressionTail = 
-			Action.RETURN,	// [55] ComparisonOperator = EQEQ
-			Action.RETURN,	// [56] ComparisonOperator = NEQ
-			Action.RETURN,	// [57] ComparisonOperator = LT
-			Action.RETURN,	// [58] ComparisonOperator = LEQ
-			Action.RETURN,	// [59] ComparisonOperator = GT
-			Action.RETURN,	// [60] ComparisonOperator = GEQ
-			new Action() {	// [61] ArithmeticExpression = Term
+			RETURN2,	// [45] ParamList = Parameter ParamListTail; returns 'ParamListTail' although none is marked
+			Action.NONE,  	// [46] ParamList = 
+			RETURN3,	// [47] ParamListTail = COMMA Parameter ParamListTail; returns 'ParamListTail' although none is marked
+			Action.NONE,  	// [48] ParamListTail = 
+			RETURN2,	// [49] Parameter = TypeName ID; returns 'ID' although none is marked
+			Action.RETURN,	// [50] Expression = Assignment
+			Action.RETURN,	// [51] Expression = RHSExpression
+			RETURN3,	// [52] Assignment = LHSExpression EQL Expression; returns 'Expression' although none is marked
+			RETURN2,	// [53] LHSExpression = ID ArrayAccess; returns 'ArrayAccess' although none is marked
+			RETURN4,	// [54] ArrayAccess = LBRACKET Expression RBRACKET ArrayAccess; returns 'ArrayAccess' although none is marked
+			Action.NONE,  	// [55] ArrayAccess = 
+			RETURN2,	// [56] RHSExpression = ArithmeticExpression ComparisonExpressionTail; returns 'ComparisonExpressionTail' although none is marked
+			RETURN3,	// [57] ComparisonExpressionTail = ComparisonOperator ArithmeticExpression ComparisonExpressionTail; returns 'ComparisonExpressionTail' although none is marked
+			Action.NONE,  	// [58] ComparisonExpressionTail = 
+			Action.RETURN,	// [59] ComparisonOperator = EQEQ
+			Action.RETURN,	// [60] ComparisonOperator = NEQ
+			Action.RETURN,	// [61] ComparisonOperator = LT
+			Action.RETURN,	// [62] ComparisonOperator = LEQ
+			Action.RETURN,	// [63] ComparisonOperator = GT
+			Action.RETURN,	// [64] ComparisonOperator = GEQ
+			new Action() {	// [65] ArithmeticExpression = Term
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					ArrayList lst = new ArrayList(); lst.add(_symbols[offset + 1]); return new Symbol(lst);
 				}
 			},
-			new Action() {	// [62] ArithmeticExpression = ArithmeticExpression AdditiveOperator Term
+			new Action() {	// [66] ArithmeticExpression = ArithmeticExpression AdditiveOperator Term
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					((ArrayList) _symbols[offset + 1].value).add(_symbols[offset + 3]); return _symbols[offset + 1];
 				}
 			},
-			Action.RETURN,	// [63] AdditiveOperator = PLUS
-			Action.RETURN,	// [64] AdditiveOperator = MINUS
-			new Action() {	// [65] Term = Term MultiplicativeOperator Factor
+			Action.RETURN,	// [67] AdditiveOperator = PLUS
+			Action.RETURN,	// [68] AdditiveOperator = MINUS
+			new Action() {	// [69] Term = Term MultiplicativeOperator Factor
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					((ArrayList) _symbols[offset + 1].value).add(_symbols[offset + 3]); return _symbols[offset + 1];
 				}
 			},
-			new Action() {	// [66] Term = Factor
+			new Action() {	// [70] Term = Factor
 				public Symbol reduce(Symbol[] _symbols, int offset) {
 					ArrayList lst = new ArrayList(); lst.add(_symbols[offset + 1]); return new Symbol(lst);
 				}
 			},
-			Action.RETURN,	// [67] MultiplicativeOperator = TIMES
-			Action.RETURN,	// [68] MultiplicativeOperator = DIV
-			Action.RETURN,	// [69] MultiplicativeOperator = MOD
-			RETURN2,	// [70] Factor = MINUS Factor; returns 'Factor' although none is marked
-			Action.RETURN,	// [71] Factor = PrimaryExpression
-			Action.RETURN,	// [72] PrimaryExpression = LHSExpression
-			Action.RETURN,	// [73] PrimaryExpression = FunctionCall
-			Action.RETURN,	// [74] PrimaryExpression = ArrayExpression
-			Action.RETURN,	// [75] PrimaryExpression = STRING_LITERAL
-			Action.RETURN,	// [76] PrimaryExpression = INT_LITERAL
-			Action.RETURN,	// [77] PrimaryExpression = TRUE
-			Action.RETURN,	// [78] PrimaryExpression = FALSE
-			Action.RETURN,	// [79] PrimaryExpression = ParenthesisedExpression
-			RETURN4,	// [80] FunctionCall = ID LPAREN ArgumentList RPAREN; returns 'RPAREN' although none is marked
-			RETURN2,	// [81] ArgumentList = Expression ArgumentListTail; returns 'ArgumentListTail' although none is marked
-			Action.NONE,  	// [82] ArgumentList = 
-			RETURN3,	// [83] ArgumentListTail = COMMA Expression ArgumentListTail; returns 'ArgumentListTail' although none is marked
-			Action.NONE,  	// [84] ArgumentListTail = 
-			RETURN2,	// [85] NonEmptyArgumentList = Expression ArgumentListTail; returns 'ArgumentListTail' although none is marked
-			RETURN3,	// [86] ArrayExpression = LBRACKET NonEmptyArgumentList RBRACKET; returns 'RBRACKET' although none is marked
-			RETURN3	// [87] ParenthesisedExpression = LPAREN Expression RPAREN; returns 'RPAREN' although none is marked
+			Action.RETURN,	// [71] MultiplicativeOperator = TIMES
+			Action.RETURN,	// [72] MultiplicativeOperator = DIV
+			Action.RETURN,	// [73] MultiplicativeOperator = MOD
+			RETURN2,	// [74] Factor = MINUS Factor; returns 'Factor' although none is marked
+			Action.RETURN,	// [75] Factor = PrimaryExpression
+			Action.RETURN,	// [76] PrimaryExpression = LHSExpression
+			Action.RETURN,	// [77] PrimaryExpression = FunctionCall
+			Action.RETURN,	// [78] PrimaryExpression = ArrayExpression
+			Action.RETURN,	// [79] PrimaryExpression = STRING_LITERAL
+			Action.RETURN,	// [80] PrimaryExpression = INT_LITERAL
+			Action.RETURN,	// [81] PrimaryExpression = TRUE
+			Action.RETURN,	// [82] PrimaryExpression = FALSE
+			Action.RETURN,	// [83] PrimaryExpression = ParenthesisedExpression
+			RETURN4,	// [84] FunctionCall = ID LPAREN ArgumentList RPAREN; returns 'RPAREN' although none is marked
+			RETURN2,	// [85] ArgumentList = Expression ArgumentListTail; returns 'ArgumentListTail' although none is marked
+			Action.NONE,  	// [86] ArgumentList = 
+			RETURN3,	// [87] ArgumentListTail = COMMA Expression ArgumentListTail; returns 'ArgumentListTail' although none is marked
+			Action.NONE,  	// [88] ArgumentListTail = 
+			RETURN2,	// [89] NonEmptyArgumentList = Expression ArgumentListTail; returns 'ArgumentListTail' although none is marked
+			RETURN3,	// [90] ArrayExpression = LBRACKET NonEmptyArgumentList RBRACKET; returns 'RBRACKET' although none is marked
+			RETURN3	// [91] ParenthesisedExpression = LPAREN Expression RPAREN; returns 'RPAREN' although none is marked
 		};
 	}
 
