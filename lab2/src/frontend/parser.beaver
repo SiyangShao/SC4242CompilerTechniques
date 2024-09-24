@@ -75,7 +75,7 @@ VarDeclaration = TypeName ID SEMICOLON;
 
 BlockStatements = LCURLY Statements RCURLY;
 
-IfStatement = IF LPAREN Expression RPAREN OptionalElse;
+IfStatement = IF LPAREN Expression RPAREN Statement OptionalElse;
 
 OptionalElse = ELSE Statement
   |
