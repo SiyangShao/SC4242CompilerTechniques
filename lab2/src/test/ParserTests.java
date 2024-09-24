@@ -123,5 +123,33 @@ public class ParserTests {
 		runtest("module Test { public void main() { return; }}");
 		// return expression statement
 		runtest("module Test { public void main() { return 1+1; }}");
+		// complex statement
+		runtest("""
+							module Test { public void main() {
+							int x;
+							int y;
+							if (y >= x + 1){
+								x = 1;
+							} else if(y < x / 2) {
+								y = create(x, \"hello\");
+							} else {
+							 	int i;
+								i = 1;
+								while(i <= x) {
+									i = i + 1;
+									y = cal(i);
+									x = check();
+									if (x >= 3) {
+									break;
+									} else if(y >= 3) {
+									 return y;
+									}
+								}
+							}
+							return x;
+						}
+				}
+				"""
+		);
 	}
 }
