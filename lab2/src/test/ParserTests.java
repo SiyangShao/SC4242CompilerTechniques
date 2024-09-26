@@ -222,4 +222,36 @@ public class ParserTests {
 		);
 	}
 
+	@Test
+	public void testExpression() {
+		runtest(
+			"""
+			module Test {
+				import module;
+			}
+			""",
+			false
+		);
+		runtest(
+			"""
+			module Test {
+				public void main() {
+					int[] a;
+					a = [1, 2, 3, 4];
+					int[][] b;
+					b = [[1, 2], [3, 4], [6], [7, 8, 9]];
+					int c;
+					int d;
+					c = d = 5;
+					a + true;
+					-true;
+					-false;
+					-\"xxx\";
+					-[1,2,3,\"4\"];
+				}
+			}
+			"""
+		);
+	}
+
 }
