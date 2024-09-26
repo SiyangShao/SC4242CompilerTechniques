@@ -50,6 +50,30 @@ public class ParserTests {
 		runtest("module Test { public int[] a; }");
 		runtest("module Test { public int[][] a; }");
 		runtest("module Test { public int[]int[] a; }", false);
+		runtest("""
+
+		module Test {
+			public void foo(int[] a) {
+				print(\"Foo\");
+				return;
+			}
+
+
+			public void bar(int[] a) {
+				print(\"Bar\");
+				return;
+			}
+
+
+			public void main() {
+				int[] a;
+				int[][] b;
+				boolean[][] b;
+				foo(a);
+				bar(b);
+				}
+			}
+		""");
 	}
 
 	@Test
@@ -152,4 +176,50 @@ public class ParserTests {
 				"""
 		);
 	}
+
+	@Test
+	public void testComplexStatement() {
+		runtest(
+			"""
+			module Test {
+				import transformers;
+				import tokenizer;
+				import processor;
+				import requests;
+				import Image;
+
+				public int[][] tokenize(int[] text) {
+					int[][] tokens;
+					int i;
+					i = 0;
+					while(i < len(text)) {
+						tokens[i] = tokenizer(text[i]);
+						i = i + 1;
+					}
+					return tokens;
+				}
+
+				public int[][] process(int[][] image) {
+					int[][] processed_image;
+					processed_image = processor(image);
+					return processed_image;
+				}
+
+				public void main() {
+					int[] input_text;
+					int[][] input_ids;
+					input_ids = tokenize(input_text);
+					int[][] image;
+					image = request(url);
+					int[][] processed_image;
+					processed_image = process(image);
+					int[][] result;
+					result = transformer(input_ids, processed_image);
+					print(result);
+				}
+			}
+			"""
+		);
+	}
+
 }
