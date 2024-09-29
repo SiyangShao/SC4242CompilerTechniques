@@ -254,4 +254,14 @@ public class ParserTests {
 		);
 	}
 
+	@Test
+	public void testMoreAssignment(){
+		//test precondition
+		runtest("module Test{ public int function_name() {  } }");
+		
+		runtest("module Test{ public int function_name() { a=1; } }");
+		runtest("module Test{ public int function_name() { a=b=c=3; } }");
+		runtest("module Test{ public int function_name() { a=a()==true==false==123==-3; } }",false);
+	}
+
 }

@@ -135,11 +135,10 @@ ArrayAccess = LBRACKET Expression RBRACKET ArrayAccess
   |
   ;
 
-RHSExpression = ArithmeticExpression ComparisonExpressionTail;
-
-ComparisonExpressionTail = ComparisonOperator ArithmeticExpression ComparisonExpressionTail
-  |
+RHSExpression = ArithmeticExpression
+  | ArithmeticExpression ComparisonOperator ArithmeticExpression
   ;
+
 
 ComparisonOperator = EQEQ | NEQ | LT | LEQ | GT | GEQ;
 
