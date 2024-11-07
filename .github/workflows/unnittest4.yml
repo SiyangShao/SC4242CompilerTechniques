@@ -3,7 +3,7 @@ name: Unit Test - Project4
 on: [push, pull_request]
 
 concurrency:
-  group: unit-test-lab2-${{ github.ref }}
+  group: unit-test-lab4-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
         id: javac
         run: |
           cd lab4
-          make build
+          make compile
       - name: Test
         id: test
         run: |
