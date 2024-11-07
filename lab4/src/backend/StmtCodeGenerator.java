@@ -107,15 +107,15 @@ public class StmtCodeGenerator extends Visitor<Void> {
 		/* TODO: generate code for while statement as discussed in lecture; add the NOP statement you
 		 *       generate as the break target to the breakTargets map
 		 */
-		NopStmt loopHead = j.newNopStmt();
-		NopStmt loopTail = j.newNopStmt();
-		breakTargets.put(nd, loopTail);
-		units.add(loopHead);
+		NopStmt label0 = j.newNopStmt();
+		NopStmt label1 = j.newNopStmt();
+		breakTargets.put(nd, label1);
+		units.add(label0);
 		Value cond = ExprCodeGenerator.generate(nd.getExpr(), fcg);
-		units.add(j.newIfStmt(j.newEqExpr(cond, IntConstant.v(0)), loopTail));
+		units.add(j.newIfStmt(j.newEqExpr(cond, IntConstant.v(0)), label1));
 		nd.getBody().accept(this);
-		units.add(j.newGotoStmt(loopHead));
-		units.add(loopTail);
+		units.add(j.newGotoStmt(label0));
+		units.add(label1);
 		breakTargets.remove(nd);
 
 		return null;

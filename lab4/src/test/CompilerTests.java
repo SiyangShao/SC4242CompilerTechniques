@@ -297,26 +297,21 @@ public class CompilerTests {
 				"f",
 				new Class<?>[0],
 				new Object[0],
-				45); 
+				45);
 	}
 
 	@Test
-	public void testVisitBreakStmt() {
-		// TODO: Problem
+	public void testDirectReturn() {
 		runtest("module Test {" +
 				"  public int f() {" +
 				"    int sum;" +
 				"    sum = 0;" +
-				"    int i; " +
-				"    i = 0;" +
-				// "    if(sum > 5) {return 1;} else{return 2;}"+
+				"    int i;" +
+				"    i = 1;" +
 				"    while (i < 10) {" +
-				"      if (sum > 5) {" +
-				"        sum = sum - 5;" +
-				"				  return 10;" +
-				"      }" +
 				"      sum = sum + i;" +
 				"      i = i + 1;" +
+				"      break;"+
 				"    }" +
 				"    return sum;" +
 				"  }" +
@@ -325,6 +320,6 @@ public class CompilerTests {
 				"f",
 				new Class<?>[0],
 				new Object[0],
-				10); // 0 + 1 + 2 + 3 + 4 = 10
+				1); // sum > 5 when sum = 6, so it returns 10
 	}
 }
