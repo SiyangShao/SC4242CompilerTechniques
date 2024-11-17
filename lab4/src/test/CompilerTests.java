@@ -322,4 +322,70 @@ public class CompilerTests {
 				new Object[0],
 				1); // sum > 5 when sum = 6, so it returns 10
 	}
+
+	@Test
+	public void testFunctionCall() {
+		runtest("module Test {" +
+				"  public int f() {" + 
+				"		int sum;" +
+				"		int x;" +
+				"		x = g();" +
+				"		return x;" +
+				"	}" + 
+				"	public int g() {" +
+				"		return 10;" +
+				"	}" +
+				"}",
+				"Test",
+				"f",
+				new Class<?>[0],
+				new Object[0],
+				10
+		);
+	}
+
+	@Test
+	public void testvisitWhileIfCall() {
+		runtest(
+			"module Test {" +
+			"	public int f(int x, int y) {" +
+			"		while(true) {" +
+			"			if (x > y) {" +
+			"				x = x - 1;" +
+			"			}" +
+			"			else {" +
+			"				break;" +
+			"			}" +
+			"		}" +
+			"		return x;" +
+			"	}" +
+			"}",
+			"Test",
+			"f",
+			new Class<?>[] { int.class, int.class },
+			new Object[] { 10, 5 },
+			5
+		);
+
+		runtest(
+			"module Test {" +
+			"	public int f(int x, int y) {" +
+			"		while(true) {" +
+			"			if (x > y) {" +
+			"				return x;" +
+			"			}" +
+			"			else {" +
+			"				return y;" +
+			"			}" +
+			"		}" +
+			"		return x;" +
+			"	}" +
+			"}",
+			"Test",
+			"f",
+			new Class<?>[] { int.class, int.class },
+			new Object[] { 10, 5 },
+			10
+		);
+	}
 }
